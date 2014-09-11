@@ -254,7 +254,8 @@
 
 <?php get_footer(); ?>
 
-<script src="<?php echo get_template_directory_uri(); ?>/buzz/js/PageManager.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/buzz/js/Util.js"></script>
+<script src="hahah<?php echo get_template_directory_uri(); ?>/buzz/js/PageManager.js"></script>
 <script>
   jQuery(document).ready(function($) {
     var book = {};
@@ -355,6 +356,9 @@
       }
     });
 
+    $(window).resize(BizzBuzzUtil.debounce(function(){
+      pm.resetFrame();
+    },1000));
 
   });
 </script>

@@ -157,6 +157,11 @@ var PageManager = (function(){
       $frame = $(frameId);
       $frame.css("width", $(window).width());
       $frame.css("height", $(window).height());
+      frameCenter = {
+        x: $frame.width()/2,
+        y: $frame.height()/2
+      };
+      renderPanel();
     }
     
     // set the background image aka `page` and triggers a callback when the image has been loaded
