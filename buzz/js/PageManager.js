@@ -161,7 +161,12 @@ var PageManager = (function(){
         x: $frame.width()/2,
         y: $frame.height()/2
       };
-      renderPanel();
+
+      if (viewLevel == PANEL_VIEW_LEVEL) {
+        renderPanel();
+      } else {
+        renderPage();
+      }
     }
     
     // set the background image aka `page` and triggers a callback when the image has been loaded
