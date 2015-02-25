@@ -230,17 +230,15 @@ opacity:.90;
 
 
 #frame {
-  display: none;
+  visibility: hidden;
   background-image: url(https://5590b350b8e8612362e86b9426c7815b2a13a98a.googledrive.com/host/0B55OYxnBow_9UG5HbW1fWGhkR2c/spiral.gif);
-position: fixed;
-top: 0;
-left: 0;
-width: 600px;
-height: 400px;
-        background-color: black;
-        background-repeat: no-repeat;
-border: 1px solid #eee;
-        z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  background-repeat: no-repeat;
+  border: 1px solid #eee;
+  z-index: 2000;
         /*
            -webkit-transition: background-position .9s ease-in-out;
            -moz-transition: background-position .9s ease-in-out;
@@ -251,11 +249,11 @@ transition: background-position .9s ease-in-out;
 
 
 
-#frame .action-line-wrapper:hover .action-line {
+.projector .action-line-wrapper:hover .action-line {
 display: block;
 }
 
-#frame .action-line-wrapper {
+.projector .action-line-wrapper {
 position: absolute;
 bottom: 0;
 width: 100%;
@@ -263,7 +261,7 @@ height: 20%;
         z-index: 10;
 }
 
-#frame .action-line {
+.projector .action-line {
 display: none;
          background-color: rgba(50,50,50,0.5);
 padding: 10px 20px;
@@ -273,7 +271,7 @@ position: absolute;
 width: 100%;
 }
 
-#frame .click-action {
+.projector .click-action {
 height: 100%;
 width: 50%;
        z-index: 5;
@@ -281,7 +279,7 @@ position: absolute;
 top: 0;
 }
 
-#frame .click-action.right {
+.projector .click-action.right {
 right:0;
 }
 
