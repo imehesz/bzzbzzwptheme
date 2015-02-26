@@ -252,7 +252,11 @@
 <?php get_footer(); ?>
 
 <script src="<?php echo get_template_directory_uri(); ?>/buzz/js/Util.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/buzz/js/bizzbuzzengine.js"></script>
+<?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) :?>
+  <script src="<?php echo get_template_directory_uri(); ?>/buzz/js/bizzbuzzengine.js"></script>
+<?php else: ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/buzz/js/bizzbuzzengine.min.js"></script>
+<?php endif; ?>
 <script>
   jQuery(document).ready(function($) {
     var book = {};
@@ -367,9 +371,6 @@
     }
 
     $(window).resize(BizzBuzzUtil.debounce(function(){
-      // TODO fixed for now but should go in the engine
-      p.width = p.getWidth();
-      p.height = p.getHeight();
       p.project();
     },500));
 
