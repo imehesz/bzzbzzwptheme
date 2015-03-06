@@ -378,11 +378,11 @@
       if ($proj.css("visibility") == "visible") {
         // 37 - left, 39 - right, 32 - space
         if(e && e.keyCode == 37) {
-          p.prev();
+          $btnTurnPrevious.trigger("click");
         }
 
         if(e && (e.keyCode == 39 || e.keyCode == 32)) {
-          p.next();
+          $btnTurnNext.trigger("click");
         }
       }
     });
