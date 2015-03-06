@@ -27,7 +27,7 @@
         return $this->tags;
       }
 
-      return $this->tags = get_the_terms($comic->ID, array("tag","comics-tag"));
+      return $this->tags = get_the_terms($this->comicId, array("tag","comics-tag"));
     }
 
     function getId() {

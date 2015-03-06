@@ -31,32 +31,27 @@
       <p></p>
       <div id="buzzCarousel" class="carousel slide" data-ride="carousel">
 
-        <?php $the_query2 = new WP_Query( $args ); if ( $the_query2->have_posts() ) : ?>
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <?php $cnt=0; while ( $the_query2->have_posts() ): ?>
-              <?php $the_query2->the_post(); ?>
-              <li slide-to="<?php echo $cnt; ?>" class="<?php if($cnt==0) echo "active"; ?>"></li>
-            <?php $cnt++; endwhile; wp_reset_postdata(); ?>
-          </ol>
-        <?php endif; ?>
-  
         <?php $the_query = new WP_Query( $args ); if ( $the_query->have_posts() ) : ?>
-            <div class="carousel-inner" style="height:500px;">
+                <div class="carousel-inner" style="height:500px;">
               <?php $cnt=0; while ( $the_query->have_posts() ): ?>
-                <?php $the_query->the_post(); $cp = new ComicParser($post); ?>
-                  <div class="item <?php if($cnt==0) echo "active"; ?>">
-                    <img src="<?php echo $cp->getCover(); ?>" alt="<?php echo $cp->getTitle(); ?>">
-                    <div class="container">
-                      <div class="carousel-caption">
-                        <h1><?php echo $cp->getTitle(); ?></h1>
-                        <p><?php echo $cp->getExcerpt(); ?></p>
-                        <p><a class="btn btn-lg btn-success" href="<?php echo get_permalink($cp->getId()); ?>" role="button">Check it out!</a></p>
-                      </div>
-                    </div>
+              <?php if($cnt == 0 || $cnt % 3 == 0) : ?>
+                  <div class="item <?php echo $cnt == 0 ? "active" : "" ?>">
+              <?php endif; ?>
+              <?php $the_query->the_post(); $cp = new ComicParser($post); ?>
+                <div class="featured-wrapper">
+                  <a class="featured-link" href="<?php echo get_permalink($cp->getId()); ?>"><img class="img-responsive" src="<?php echo $cp->getCover(); ?>" alt="<?php echo $cp->getTitle(); ?>"></a>
+                  <div class="featured-info-wrapper">
+                    <h1><a class="featured-link" href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h1>
                   </div>
-              <?php $cnt++; endwhile ?>
-            </div>
+                </div>
+              <?php $cnt++; ?>
+
+              <?php if ($cnt ==0 || $cnt % 3 == 0 || $cnt == $the_query->found_posts) : ?>
+                  </div>
+              <?php endif; ?>
+
+            <?php endwhile; ?>
+                </div>
     
             <a class="left carousel-control" onclick="return false;" href="#buzzCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
             <a class="right carousel-control" onclick="return false;" href="#buzzCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
