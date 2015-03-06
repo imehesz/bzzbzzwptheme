@@ -374,6 +374,19 @@
       p.project();
     },500));
 
+    document.addEventListener("keydown", function(e){
+      if ($proj.css("visibility") == "visible") {
+        // 37 - left, 39 - right, 32 - space
+        if(e && e.keyCode == 37) {
+          p.prev();
+        }
+
+        if(e && (e.keyCode == 39 || e.keyCode == 32)) {
+          p.next();
+        }
+      }
+    });
+
     pageCache();
     bm.getCurrentPage(p.project, p);
   });
