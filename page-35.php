@@ -32,7 +32,7 @@
       <div id="buzzCarousel" class="carousel slide" data-ride="carousel">
 
         <?php $the_query = new WP_Query( $args ); if ( $the_query->have_posts() ) : ?>
-                <div class="carousel-inner" style="height:500px;">
+                <div class="carousel-inner">
               <?php $cnt=0; while ( $the_query->have_posts() ): ?>
               <?php if($cnt == 0 || $cnt % 3 == 0) : ?>
                   <div class="item <?php echo $cnt == 0 ? "active" : "" ?>">

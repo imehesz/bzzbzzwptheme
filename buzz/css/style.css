@@ -37,9 +37,14 @@ left: 0;
 
   /* Carousel base class */
   .carousel {
-height: 500px;
-        margin-bottom: 60px;
+    height: 500px;
+    margin-bottom: 60px;
   }
+
+  .carousel .carousel-inner {
+    height:500px;
+  }
+
   /* Since positioning the image, we need to help out the caption */
   .carousel-caption {
     z-index: 10;
@@ -51,8 +56,8 @@ height: 500px;
 
   /* Declare heights because of positioning of img element */
   .carousel .item {
-height: 500px;
-        background-color: #777;
+    height: 500px;
+    background-color: #777;
   }
   .carousel-inner > .item > img {
     position: absolute;
@@ -79,11 +84,38 @@ height: 500px;
   }
 
 
-  .carousel-inner .featured-info-wrapper h1 a {
-    color: orange;
+  .carousel-inner .featured-info-wrapper h1 {
     font-size: 20px;
+    margin: 5px 0;
   }
 
+  .carousel-inner .featured-info-wrapper h1 a {
+    color: orange;
+  }
+
+  @media (max-width: 990px) {
+    .carousel,
+    .carousel .carousel-inner,
+    .carousel .item {
+      height: 350px;
+    }
+
+    .carousel-inner .featured-info-wrapper h1 a {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .carousel,
+    .carousel .carousel-inner,
+    .carousel .item {
+      height: 250px;
+    }
+
+    .carousel-inner .featured-info-wrapper h1 a {
+      font-size: 10px;
+    }
+  }
 
   /* MARKETING CONTENT
      -------------------------------------------------- */
