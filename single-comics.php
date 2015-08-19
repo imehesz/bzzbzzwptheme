@@ -71,7 +71,7 @@
 
           <div class="row title-and-book-info">
             <div class="col-sm-12">
-              <h1 class="page-header"><?php echo the_title();?></h1>
+              <h1 class="front-big-label"><?php echo the_title();?></h1>
 
                 <?php $tags = $cp->getTags(); if(is_array($tags) && sizeof($tags)>0) : ?>
                   <h4 class="tag-list">
@@ -121,8 +121,8 @@
 
             <div class="col-sm-6">
               <p>
-                <button class="btn btn-success btn-lg" id="btn-buzz-reader">Launch Buzz Reader</button>
-                or <a target="_blank" href="/?comics=how-to-use-the-buzz-reader">What's a Buzz Reader!?</a>
+                <button class="btn btn-success btn-lg" id="btn-buzz-reader">Read It</button>
+                or <a target="_blank" href="/?comics=how-to-use-the-buzz-reader">Learn about our `Buzz Reader`</a>.
               </p>
   
               <p class="text-muted">About the book</p>

@@ -13,12 +13,39 @@
     "meta_value"  => "true",
     "meta_compare"     => "LIKE"
   );
+  $featuredComics = get_posts($args);
 
   $randArgs = array(
     'post_type'  => "comics",
     "orderby" => "rand",
     "posts_per_page" => "4"
   );
+
+  // a random set of classic comics
+  $classicArgs = array_merge($randArgs, array(
+    "tax_query" => array(
+      array(
+        "taxonomy"  => "comics-tag",
+        "field"     => "slug",
+        "terms"     => "classic",
+        "operator"  => "in"
+      )
+    )
+  ));
+  $classicComics = get_posts($classicArgs);
+
+  // a random set of non-classic comics
+  $nonClassicArgs = array_merge($randArgs, array(
+    "tax_query" => array(
+      array(
+        "taxonomy"  => "comics-tag",
+        "field"     => "slug",
+        "terms"     => "classic",
+        "operator"  => "not in"
+      )
+    )
+  ));
+  $nonClassicComics = get_posts($nonClassicArgs);
 ?>
 
 <!-- start content container -->
@@ -28,70 +55,16 @@
     <?php get_sidebar( 'left' ); ?>
 
     <div class="col-md-<?php devdmbootstrap3_main_content_width(); ?> dmbs-main">
-      <p></p>
-      <div id="buzzCarousel" class="carousel slide" data-ride="carousel">
-
-        <?php $the_query = new WP_Query( $args ); if ( $the_query->have_posts() ) : ?>
-                <div class="carousel-inner">
-              <?php $cnt=0; while ( $the_query->have_posts() ): ?>
-              <?php if($cnt == 0 || $cnt % 3 == 0) : ?>
-                  <div class="item <?php echo $cnt == 0 ? "active" : "" ?>">
-              <?php endif; ?>
-              <?php $the_query->the_post(); $cp = new ComicParser($post); ?>
-                <div class="featured-wrapper">
-                  <a class="featured-link" href="<?php echo get_permalink($cp->getId()); ?>"><img class="img-responsive" src="<?php echo $cp->getCover(); ?>" alt="<?php echo $cp->getTitle(); ?>"></a>
-                  <div class="featured-info-wrapper">
-                    <h1><a class="featured-link" href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h1>
-                  </div>
-                </div>
-              <?php $cnt++; ?>
-
-              <?php if ($cnt ==0 || $cnt % 3 == 0 || $cnt == $the_query->found_posts) : ?>
-                  </div>
-              <?php endif; ?>
-
-            <?php endwhile; ?>
-                </div>
-    
-            <a class="left carousel-control" onclick="return false;" href="#buzzCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            <a class="right carousel-control" onclick="return false;" href="#buzzCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-   
-        <?php endif; wp_reset_postdata(); ?>
-      </div>
-      <p></p>
-      <div class="row text_center">
-        <div class="col-md-6">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- bizzbuzz-read-top -->
-        <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-1319358860215477"
-        data-ad-slot="6070069179"
-        data-ad-format="auto"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+      <!-- FEATURED COMICS -->
+      <?php if ( sizeof($featuredComics) ) : ?>
+        <div class="row">
+          <div class="col-sm-12 dmbs-main">
+            <h1 class="front-big-label">Featured This Week</h1>
+          </div>
         </div>
-        <div class="col-md-6">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- bizzbuzz-read-top -->
-        <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-1319358860215477"
-        data-ad-slot="6070069179"
-        data-ad-format="auto"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        </div>
-
-      </div>
-      <p><br /></p>
-      <p></p>
-      <?php $the_query3 = new WP_Query( $randArgs ); if ( $the_query3->have_posts() ) : ?>
         <div class="row text-center random-four">
-        <?php $cnt=0; while ( $the_query3->have_posts() ): ?>
-          <?php $the_query3->the_post(); $cp = new ComicParser($post); ?>
+        <?php $cnt=0; foreach ( $featuredComics as $featured ): ?>
+          <?php $cp = new ComicParser($featured); ?>
             <div class="col-lg-6 col-md-6 portfolio-item">
               <div class="random-four-img-wrapper">
                 <a href="<?php echo get_permalink($cp->getId()); ?>">
@@ -101,9 +74,55 @@
               <h3><a href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h3>
               <p><?php echo $cp->getExcerpt(); ?></p>
             </div>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
         </div>
-      <?php endif; wp_reset_postdata(); ?>
+      <?php endif; ?>
+
+      <!-- CLASSIC COMICS -->
+      <?php if ( sizeof($classicComics) ) : ?>
+        <div class="row">
+          <div class="col-sm-12 dmbs-main">
+            <h2 class="front-big-label">Random Classics</h2>
+          </div>
+        </div>
+        <div class="row text-center random-four">
+        <?php $cnt=0; foreach ( $classicComics as $classic ): ?>
+          <?php $cp = new ComicParser($classic); ?>
+            <div class="col-lg-6 col-md-6 portfolio-item">
+              <div class="random-four-img-wrapper">
+                <a href="<?php echo get_permalink($cp->getId()); ?>">
+                  <img class="img-responsive" src="<?php echo $cp->getThumbnail(); ?>">
+                </a>
+              </div>
+              <h3><a href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h3>
+              <p><?php echo $cp->getExcerpt(); ?></p>
+            </div>
+        <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+
+      <!-- NON-CLASSIC COMICS -->
+      <?php if ( sizeof($nonClassicComics) ) : ?>
+        <div class="row">
+          <div class="col-sm-12 dmbs-main">
+            <h2 class="front-big-label">Random WebComics</h2>
+          </div>
+        </div>
+        <div class="row text-center random-four">
+        <?php $cnt=0; foreach ( $nonClassicComics as $nonClassic ): ?>
+          <?php $cp = new ComicParser($nonClassic); ?>
+            <div class="col-lg-6 col-md-6 portfolio-item">
+              <div class="random-four-img-wrapper">
+                <a href="<?php echo get_permalink($cp->getId()); ?>">
+                  <img class="img-responsive" src="<?php echo $cp->getThumbnail(); ?>">
+                </a>
+              </div>
+              <h3><a href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h3>
+              <p><?php echo $cp->getExcerpt(); ?></p>
+            </div>
+        <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
     </div>
 </div>
 <!-- end content container -->
