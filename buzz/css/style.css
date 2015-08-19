@@ -657,3 +657,11 @@ overflow: initial;
 .gsc-input-box {
   height: 30px;
 }
+
+.front-big-label {
+  border: 10px solid #000;
+  padding: 10px;
+  margin-left: -30px;
+  background-color: orange;
+  color: #000;
+}

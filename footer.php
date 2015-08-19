@@ -27,7 +27,7 @@
           <a href="http://www.pinterest.com/bizzbuzzcomics/">Pinterest</a>
         </p>
         <p>
-          Copyright &copy; 2014 <a href="http://bizzbuzzcomics.com">Bizz Buzz Comics</a> -
+          Copyright &copy; <?php echo date("Y");?> <a href="http://bizzbuzzcomics.com">Bizz Buzz Comics</a> -
           <a href="https://docs.google.com/document/d/1uc_juL24emg2E8n9c7htYX5FN3ihMG-g_yXvrPuT4R8">Terms and Conditions</a>
         </p>
         <p>
@@ -56,8 +56,6 @@
     }
   </style>
 <?php wp_footer(); ?>
-
-<link rel='stylesheet' href='<?php echo get_template_directory_uri(); ?>/buzz/css/style.css' type='text/css' media='all' />
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
