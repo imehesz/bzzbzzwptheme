@@ -62,21 +62,10 @@
             <h1 class="front-big-label">Featured This Week</h1>
           </div>
         </div>
-        <div class="row text-center random-four">
-        <?php $cnt=0; foreach ( $featuredComics as $featured ): ?>
-          <?php $cp = new ComicParser($featured); ?>
-            <div class="col-lg-6 col-md-6 portfolio-item">
-              <div class="random-four-img-wrapper">
-                <a href="<?php echo get_permalink($cp->getId()); ?>">
-                  <img class="img-responsive" src="<?php echo $cp->getThumbnail(); ?>">
-                </a>
-              </div>
-              <h3><a href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h3>
-              <p><?php echo $cp->getExcerpt(); ?></p>
-            </div>
-        <?php endforeach; ?>
-        </div>
+
+        <?php $type="featured"; include(locate_template("template-part-comics-short-list.php")); ?>
       <?php endif; ?>
+
 
       <!-- CLASSIC COMICS -->
       <?php if ( sizeof($classicComics) ) : ?>
@@ -85,20 +74,8 @@
             <h2 class="front-big-label">Random Classics</h2>
           </div>
         </div>
-        <div class="row text-center random-four">
-        <?php $cnt=0; foreach ( $classicComics as $classic ): ?>
-          <?php $cp = new ComicParser($classic); ?>
-            <div class="col-lg-6 col-md-6 portfolio-item">
-              <div class="random-four-img-wrapper">
-                <a href="<?php echo get_permalink($cp->getId()); ?>">
-                  <img class="img-responsive" src="<?php echo $cp->getThumbnail(); ?>">
-                </a>
-              </div>
-              <h3><a href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h3>
-              <p><?php echo $cp->getExcerpt(); ?></p>
-            </div>
-        <?php endforeach; ?>
-        </div>
+
+        <?php $type="classic"; include(locate_template("template-part-comics-short-list.php")); ?>
       <?php endif; ?>
 
       <!-- NON-CLASSIC COMICS -->
@@ -108,21 +85,8 @@
             <h2 class="front-big-label">Random WebComics</h2>
           </div>
         </div>
->>>>>>> develop
-        <div class="row text-center random-four">
-        <?php $cnt=0; foreach ( $nonClassicComics as $nonClassic ): ?>
-          <?php $cp = new ComicParser($nonClassic); ?>
-            <div class="col-lg-6 col-md-6 portfolio-item">
-              <div class="random-four-img-wrapper">
-                <a href="<?php echo get_permalink($cp->getId()); ?>">
-                  <img class="img-responsive" src="<?php echo $cp->getThumbnail(); ?>">
-                </a>
-              </div>
-              <h3><a href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h3>
-              <p><?php echo $cp->getExcerpt(); ?></p>
-            </div>
-        <?php endforeach; ?>
-        </div>
+
+        <?php $type="nonClassic"; include(locate_template("template-part-comics-short-list.php")); ?>
       <?php endif; ?>
     </div>
 </div>
