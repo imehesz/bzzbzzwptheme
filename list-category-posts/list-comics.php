@@ -1,6 +1,4 @@
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-<div class="row">
+<div class="row text-center random-four">
   <div class="col-md-12">
     <script>
       (function() {
@@ -22,12 +20,6 @@
 <?php
 
   include( TEMPLATEPATH . '/buzz/ComicParser.php' );
-
-/**
- * The format for templates changed since version 0.17.
- * Since this code is included inside CatListDisplayer, $this refers to
- * the instance of CatListDisplayer that called this file.
- */
 
 /* This is the string which will gather all the information.*/
 $lcp_display_output = '';
@@ -59,6 +51,7 @@ foreach ($this->catlist->get_categories_posts() as $single){
   $cp = new ComicParser($single);
 
   //Start a List Item for each post:
+  /*
   $lcp_display_output .= "<div class='books-book-wrapper col-lg-3 col-md-4 portfolio-item'>";
 
   $lcp_display_output .= "<div class='books-book-image-wrapper'>";
@@ -69,6 +62,21 @@ foreach ($this->catlist->get_categories_posts() as $single){
   $lcp_display_output .= "<h3>" . $this->get_post_title($single) . "</h3>";
 
   $lcp_display_output .= "<p>" . $cp->getExcerpt() . "</p>";
+  */
+
+  $lcp_display_output .= '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 portfolio-item">
+        <div class="random-four-img-wrapper">
+          <a href="' . get_permalink($cp->getId()) . '">
+            <img class="img-responsive" src="' . $cp->getThumbnail() . '">
+          </a>
+        </div>
+        <h3 class="hidden-xs"><a href="' . get_permalink($cp->getId()) . '">' . $cp->getTitle() . '</a></h3>
+        <p class="visivle-xs"></p>
+        <p class="visible-lg visible-md">' . $cp->getExcerpt() . '</p>
+      </div>';
+
+
+
 
   //Show comments:
   // $lcp_display_output .= $this->get_comments($single);
@@ -97,10 +105,11 @@ foreach ($this->catlist->get_categories_posts() as $single){
    */
   // $lcp_display_output .= $this->get_excerpt($single, 'div', 'lcp_excerpt');
 
-  $lcp_display_output .= '</div>';
+  //$lcp_display_output .= '</div>';
   //Close li tag
-  $lcp_display_output .= '</div>';
+  //$lcp_display_output .= '</div>';
 
+  /* removing ads for now
   if($cnt==$randAd[0] || $cnt==$randAd[1] || $cnt==$randAd[2]){
     $lcp_display_output .= "<div class='books-book-wrapper col-lg-3 col-md-4 portfolio-item'>";
     $lcp_display_output .= "<div class='books-book-image-wrapper'>";
@@ -117,6 +126,7 @@ foreach ($this->catlist->get_categories_posts() as $single){
 ADHERE;
     $lcp_display_output .= "</div></div>";
   }
+  */
 
   $cnt++;
 }
