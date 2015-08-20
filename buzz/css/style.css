@@ -201,6 +201,11 @@ margin: 80px 0; /* Space out the Bootstrap <hr> more */
     .featurette-heading {
       margin-top: 120px;
     }
+
+    .row.random-four .portfolio-item {
+      height: 455px;
+      overflow: hidden;
+    }
   }
 
 
@@ -376,18 +381,14 @@ height: initial;
   margin-bottom: 25px;
 }
 
-.row.random-four img.img-responsive {
-display: inline-block;
-}
-
 .random-four-img-wrapper {
-  max-height: 375px; 
-overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
 }
 
-.row.random-four .portfolio-item {
-height: 485px;
-overflow: hidden;
+.random-four-img-wrapper img {
+  position: absolute;
 }
 
 .row.feeling-lucy a {
@@ -618,13 +619,13 @@ width:70px;
 
 @media (max-width: 991px) {
   .books-book-wrapper {
-height: auto;
-overflow: initial;
+    height: auto;
+    overflow: initial;
   }
 
   .books-book-image-wrapper {
-height: auto;
-overflow: initial;
+    height: auto;
+    overflow: initial;
   }
 }
 

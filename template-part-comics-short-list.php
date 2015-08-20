@@ -20,7 +20,7 @@
           </a>
         </div>
         <h3 class="hidden-xs"><a href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></h3>
-        <strong class="visible-xs"><a href="<?php echo get_permalink($cp->getId()); ?>"><?php echo $cp->getTitle(); ?></a></strong>
+        <p class="visivle-xs"></p>
         <p class="visible-lg visible-md"><?php echo $cp->getExcerpt(); ?></p>
       </div>
   <?php endforeach; ?>
