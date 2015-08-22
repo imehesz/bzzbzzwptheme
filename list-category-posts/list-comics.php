@@ -64,7 +64,7 @@ foreach ($this->catlist->get_categories_posts() as $single){
   $lcp_display_output .= "<p>" . $cp->getExcerpt() . "</p>";
   */
 
-  $lcp_display_output .= '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 portfolio-item">
+  $lcp_display_output .= '<div class="col-sm-3 col-xs-6 portfolio-item">
         <div class="random-four-img-wrapper">
           <a href="' . get_permalink($cp->getId()) . '">
             <img class="img-responsive" src="' . $cp->getThumbnail() . '">
