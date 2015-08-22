@@ -666,3 +666,8 @@ width:70px;
   background-color: orange;
   color: #000;
 }
+
+.rw-ui-mobile-wrapper{
+  /* z-index: 0 !important; */
+  display:none;
+}
