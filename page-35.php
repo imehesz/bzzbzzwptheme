@@ -11,7 +11,8 @@
     'post_type'   => "comics",
     'meta_key'    => 'ComicStatus',
     "meta_value"  => "true",
-    "meta_compare"     => "LIKE"
+    "meta_compare"     => "LIKE",
+    "posts_per_page" => "8"
   );
   $featuredComics = get_posts($args);
 
