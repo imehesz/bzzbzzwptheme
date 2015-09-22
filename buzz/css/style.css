@@ -195,6 +195,10 @@ margin: 80px 0; /* Space out the Bootstrap <hr> more */
     .featurette-heading {
       font-size: 50px;
     }
+
+    .col-sm-3 {
+      height: 325px;
+    }
   }
 
   @media (min-width: 992px) {
@@ -203,8 +207,10 @@ margin: 80px 0; /* Space out the Bootstrap <hr> more */
     }
 
     .row.random-four .portfolio-item {
-      height: 455px;
-      overflow: hidden;
+    }
+
+    .col-sm-3 {
+      height: 380px;
     }
   }
 
