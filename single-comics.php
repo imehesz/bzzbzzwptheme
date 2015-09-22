@@ -234,7 +234,9 @@
 
 <div id="bizzbuzz-page-cache" style="display:none;"></div>
 
-<div id="projector1" class="projector" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:10000;visibility:hidden;">
+<div id="projector1" class="projector">
+
+  <div id="bizzbuzz-reader-info"></div>
   <canvas id="projector-overlay" width="200" height="200"></canvas> 
   <div class="click-action left"></div>
   <div class="click-action right"></div>
@@ -292,12 +294,23 @@
     var $btnTurnNext = $(projectorSelector + " .btn-turn-next");
     var $pageClickAction = $(projectorSelector + " .click-action");
     var $btnChangeViewLevel = $(projectorSelector + " .btn-change-view-level");
+    var $readerInfoLayover = $("#bizzbuzz-reader-info");
 
     var $modalFinish = $("#modal-finish");
     var $modalClose = $("#modal-finish a.modal-close");
 
+    var removeInfoLayover = function() {
+      $readerInfoLayover.css("visibility", "hidden");
+    }
+
+    $readerInfoLayover.on("click", function(e){
+      e.stopPropagation();
+      removeInfoLayover();
+    });
+
     var launchReader = function() {
       $proj.css("visibility", "visible");
+      setTimeout(removeInfoLayover, 5000);
     }
 
     $coverImg.on("click", launchReader);

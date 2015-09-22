@@ -23,7 +23,7 @@
     function devdmbootstrap3_theme_stylesheets()
     {
         wp_register_style('bootstrap.css', get_template_directory_uri() . '/css/bootstrap.css', array(), '1', 'all' );
-        wp_register_style('buzz:style.css', get_template_directory_uri() . '/buzz/css/style.css', array(), '10', 'all' );
+        wp_register_style('buzz:style.css', get_template_directory_uri() . '/buzz/css/style.css', array(), '11', 'all' );
         wp_enqueue_style( 'bootstrap.css');
         wp_enqueue_style( 'buzz:style.css');
         wp_enqueue_style( 'stylesheet', get_stylesheet_uri(), array(), '1', 'all' );
