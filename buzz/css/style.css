@@ -93,30 +93,6 @@ left: 0;
     color: orange;
   }
 
-  @media (max-width: 990px) {
-    .carousel,
-    .carousel .carousel-inner,
-    .carousel .item {
-      height: 350px;
-    }
-
-    .carousel-inner .featured-info-wrapper h1 a {
-      font-size: 12px;
-    }
-  }
-
-  @media (max-width: 650px) {
-    .carousel,
-    .carousel .carousel-inner,
-    .carousel .item {
-      height: 250px;
-    }
-
-    .carousel-inner .featured-info-wrapper h1 a {
-      font-size: 10px;
-    }
-  }
-
   /* MARKETING CONTENT
      -------------------------------------------------- */
 
@@ -696,3 +672,33 @@ width:70px;
   /* z-index: 0 !important; */
   display:none;
 }
+
+@media (max-width: 990px) {
+  .carousel,
+  .carousel .carousel-inner,
+  .carousel .item {
+    height: 350px;
+  }
+
+  .carousel-inner .featured-info-wrapper h1 a {
+    font-size: 12px;
+  }
+
+  #bizzbuzz-reader-info {
+    background-size: 75%;
+  }
+}
+
+@media (max-width: 650px) {
+  .carousel,
+  .carousel .carousel-inner,
+  .carousel .item {
+    height: 250px;
+  }
+
+  .carousel-inner .featured-info-wrapper h1 a {
+    font-size: 10px;
+  }
+}
+
+
