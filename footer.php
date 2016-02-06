@@ -27,7 +27,7 @@
           <a href="http://www.pinterest.com/bizzbuzzcomics/">Pinterest</a>
         </p>
         <p>
-          Copyright &copy; <?php echo date("Y");?> <a href="http://bizzbuzzcomics.com">Bizz Buzz Comics</a> -
+          Copyright &copy; 2014-<?php echo date("Y");?> <a href="http://bizzbuzzcomics.com">Bizz Buzz Comics</a> -
           <a href="https://docs.google.com/document/d/1uc_juL24emg2E8n9c7htYX5FN3ihMG-g_yXvrPuT4R8">Terms and Conditions</a>
         </p>
         <p>
