@@ -146,11 +146,12 @@
   
               <p class="text-muted">Share</p>
               <p>
-                <span class='st_sharethis_hcount' displayText='ShareThis'></span>
-                <span class='st_facebook_hcount' displayText='Facebook'></span>
-                <span class='st_twitter_hcount' displayText='Tweet'></span>
-                <span class='st_pinterest_hcount' displayText='Pinterest'></span>
-                <span class='st_googleplus_hcount' displayText='Google +'></span>
+                <span class='st_sharethis' displayText='ShareThis'></span>
+                <span class='st_facebook' displayText='Facebook'></span>
+                <span class='st_twitter' displayText='Tweet'></span>
+                <span class='st_pinterest' displayText='Pinterest'></span>
+                <span class='st_email' displayText='Email'></span>
+                <span class='st_googleplus' displayText='Google +'></span>
                 <p></p>
               </p>
   
@@ -453,3 +454,8 @@ rw.id = id; rw.async = true; rw.type = "text/javascript";
 rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
 s.parentNode.insertBefore(rw, s);
 }(document, new Date(), "script", "rating-widget.com/"));</script>
+
+<!-- share this -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "5ea314ce-0217-40b7-8882-9c8b3178defa", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
